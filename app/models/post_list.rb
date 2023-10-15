@@ -1,0 +1,2 @@
+class PostList < ApplicationRecord
+end

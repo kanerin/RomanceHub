@@ -1,1 +1,8 @@
-hello world
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <h2><%= post.title %></h2>
+      <p><%= post.content %></p>
+    </li>
+  <% end %>
+</ul>

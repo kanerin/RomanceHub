@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>Sample_GoogleMap</title>
 
     <script src="http://maps.google.com/maps/api/js?key=<%= ENV['API_KEY'] %>&language=ja"></script>
     <%= stylesheet_link_tag 'post_lists', media: 'all', 'data-turbolinks-track': 'reload' %>
-</head>
+    <%= javascript_pack_tag 'post_lists', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<body>
-    <div id="map"></div>
-    <ul>
-    <% @posts.each do |post| %>
-        <li>
-        <h2><%= post.title %></h2>
-        <p><%= post.content %></p>
-        </li>
-    <% end %>
-    </ul>
-    
-    <%= form_for @post, url: post_lists_path do |f| %>
-    <div class="field">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+  <body>
+    <div id=info_area>
+      <div id=form_area>
+          <%= form_for @post, url: post_lists_path do |f| %>
+          <div class="field">
+              <%= f.label :title %>
+              <%= f.text_field :title %>
+          </div>
+        
+          <div class="field">
+              <%= f.label :content %>
+              <%= f.text_area :content %>
+          </div>
+        
+          <div class="actions">
+            <%= f.submit "投稿" %>
+          </div>
+        <% end %>
+      </div>
+      <div id=post_area>
+          <ul>
+        <% @posts.each do |post| %>
+            <li>
+            <h2><%= post.title %></h2>
+            <p><%= post.content %></p>
+            </li>
+        <% end %>
+        </ul>
+      </div>
     </div>
-  
-    <div class="field">
-        <%= f.label :content %>
-        <%= f.text_area :content %>
+    <>
+    <div id=map_area>
+      <div id="map">
+      </div>
     </div>
-  
-    <div class="actions">
-      <%= f.submit "投稿" %>
-    </div>
-  <% end %>
 
-  <script>
-    var MyLatLng = { lat: 35.6895, lng: 139.6917 };
-    var Options = {
-      zoom: 15,
-      center: MyLatLng,
-      mapTypeId: 'roadmap'
-    };
-    var map = new google.maps.Map(document.getElementById('map'), Options);
-  </script>
-
-</body>
+  </body>
 </html>

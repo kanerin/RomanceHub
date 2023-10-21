@@ -10,12 +10,11 @@ class PostListsController < ApplicationController
         else
           render 'new'
         end
-      end
+    end
       
-      private
+    private
       
-      def post_params
-        params.require(:post).permit(:title, :content)
-      end
-      
+    def post_params
+      params.require(:post).permit(:title, :content)
+    end
 end

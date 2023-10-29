@@ -6,35 +6,47 @@
     <title>Sample_GoogleMap</title>
     
     <script src="http://maps.google.com/maps/api/js?key=<%= ENV['API_KEY'] %>&language=ja"></script>
-    <%= stylesheet_link_tag 'post_list', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'post_lists', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
+  <div id="map-container">
     <div id="map"></div>
-    <ul>
-    <% @posts.each do |post| %>
-        <li>
-        <h2><%= post.title %></h2>
-        <p><%= post.content %></p>
-        </li>
-    <% end %>
-    </ul>
-    
-    <%= form_for @post, url: post_lists_path do |f| %>
-    <div class="field">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <p>アイコンとか入れる</p>
+      <p>タイトルとか入れる</p>
+      <input type="text" placeholder="投稿を検索">
+      <button type="submit">検索</button>
     </div>
-  
-    <div class="field">
-        <%= f.label :content %>
-        <%= f.text_area :content %>
+    <div class="sidebar-content">
+        <ul>
+        <% @posts.each do |post| %>
+            <li>
+            <h2><%= post.title %></h2>
+            <p><%= post.content %></p>
+            </li>
+        <% end %>
+        </ul>
+    <div class="sidebar-form">
+        <%= form_for @post, url: post_lists_path do |f| %>
+          <div class="field">
+              <%= f.label :投稿タイトル %>
+              <%= f.text_field :title %>
+          </div>
+        
+          <div class="field">
+              <%= f.label :投稿内容を入力 %><br>
+              <%= f.text_area :content %>
+          </div>
+        
+          <div class="actions">
+              <%= f.submit "投稿", class: "submit-button" %>
+          </div>
+        <% end %>
     </div>
-  
-    <div class="actions">
-      <%= f.submit "投稿" %>
-    </div>
-  <% end %>
+  </div>
   <script>
     var MyLatLng = { lat: 35.6811673, lng: 139.7670516 };
     var Options = {
@@ -44,6 +56,5 @@
     };
     var map = new google.maps.Map(document.getElementById('map'), Options);
   </script>
-
 </body>
 </html>

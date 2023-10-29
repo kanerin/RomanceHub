@@ -5,9 +5,85 @@
 html {
     height: 100%
 }
+
 body {
     height: 100%
 }
+
+#map-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+}
+
 #map {
-    height: 50%; width: 50%
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100%;
+    background-color: #f0f0f0;
+    z-index: 1;
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+}
+
+.sidebar-content {
+    flex-grow: 1; 
+    overflow-y: auto; 
+}
+
+.sidebar-form {
+    position: sticky;
+    bottom: 0;
+    background-color: #f0f0f0;
+    padding: 10px;
+    height: 35%;
+}
+
+
+input[type="text"] {
+    width: 80%; 
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.field input[type="text"] {
+    width: 350px; 
+}
+
+.field textarea {
+    height: 100px;
+    width: 350px;
+}
+
+.submit-button {
+    padding: 5px 10px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }

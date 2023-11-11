@@ -17,8 +17,8 @@
     <div class="sidebar-header">
       <p>アイコンとか入れる</p>
       <p>タイトルとか入れる</p>
-      <input type="text" placeholder="投稿を検索">
-      <button type="submit">検索</button>
+      <input type="text" id="search_input" placeholder="投稿を検索">
+      <button type="submit" id="search_button">検索</button>
     </div>
     <div class="sidebar-content">
         <ul>
@@ -29,6 +29,10 @@
             </li>
         <% end %>
         </ul>
+
+        <div id="no_results">
+          <p>検索結果がありません。</p>
+        </div>
     <div class="sidebar-form">
         <%= form_for @post, url: post_lists_path do |f| %>
           <div class="field">
@@ -55,6 +59,36 @@
       mapTypeId: 'roadmap'
     };
     var map = new google.maps.Map(document.getElementById('map'), Options);
+
+    function performSearch() {
+      var searchInput = document.getElementById('search_input').value.toLowerCase();
+      var posts = document.querySelectorAll('.sidebar-content li');
+      for (var i = 0; i < posts.length; i++) {
+        var title = posts[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+        var content = posts[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+        if (title.includes(searchInput) || content.includes(searchInput)) {
+          posts[i].style.display = "";
+        } else {
+          posts[i].style.display = "none";
+        }
+      }
+
+      var noResults = document.getElementById('no_results');
+      if (count === 0) {
+        noResults.style.display = "block";
+      } else {
+        noResults.style.display = "none";
+      }
+    }
+
+    document.getElementById('search_button').addEventListener('click', performSearch);
+    
+    document.getElementById('search_input').addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        performSearch();
+        event.preventDefault(); 
+      }
+    });
   </script>
 </body>
 </html>

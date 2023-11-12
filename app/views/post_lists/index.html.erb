@@ -13,6 +13,10 @@
   <div id="map-container">
     <div id="map"></div>
   </div>
+  <div id="romancehub-header">
+      <input type="text" id="search_place_input" placeholder="地名または住所を入力してください">
+      <button type="submit" id="search_place_button">検索</button>
+  </div>
   <div class="sidebar">
     <div class="sidebar-header">
       <p>アイコンとか入れる</p>
@@ -89,6 +93,11 @@
         event.preventDefault(); 
       }
     });
+
+    window.onload = function() {
+        var sidebarContent = document.querySelector('.sidebar-content');
+        sidebarContent.scrollTop = sidebarContent.scrollHeight;
+    };
   </script>
 </body>
 </html>

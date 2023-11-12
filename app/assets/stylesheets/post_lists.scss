@@ -43,15 +43,15 @@ body {
     margin: 0 10px;
     display: flex;
     justify-content: space-between;
-    padding: 8px 10px; /* パディングを調整 */
-    border: 1px solid #ccc; /* 境界線を追加 */
-    border-radius: 4px; /* 角を丸める */
+    padding: 8px 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
 }
 
 #search_place_button {
-    margin-left: 10px; /* 左側のマージンを10pxに増やす */
-    padding: 8px 15px; /* ボタンのパディングを調整 */
-    border-radius: 4px; /* ボタンの角を丸める */
+    margin-left: 10px; 
+    padding: 8px 15px; 
+    border-radius: 4px; 
 }
 
 .sidebar {
@@ -98,7 +98,7 @@ body {
     padding: 10px;
     height: 35%;
     border-top: 1px solid #ccc;
-    box-sizing: border-box; /* ボックスサイズを調整 */
+    box-sizing: border-box; 
 }
 
 input[type="text"] {
